@@ -40,9 +40,9 @@ def main():
         w, h = draw.textsize(date_msg, font=font40)
         draw.text(((epd.width-w)/2,0), date_msg, font = font40, fill=epd.BLACK)
 
-        weather_msg = W.get_weather()
+        weather_msg = W.get_weather().capitalize()
         w, h = draw.textsize(weather_msg, font=font40)
-        draw.text(((epd.width-w)/2,epd.height-h), weather_msg, font = font40, fill=epd.BLACK)
+        draw.text(((epd.width-w)/2,epd.height-h-10), weather_msg, font = font40, fill=epd.BLACK)
 
         epd.display(epd.getbuffer(Himage))
         #time.sleep(60)
