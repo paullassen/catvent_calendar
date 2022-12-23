@@ -19,7 +19,7 @@ from datetime import date
 from lib import weather
 
 def main():
-    w = weather.Weather("Sacramento,CA,US", "imperial")
+    W = weather.Weather("Sacramento,CA,US", "imperial")
 
     try:
         logging.info("epd5in65f Demo")
@@ -40,7 +40,7 @@ def main():
         w, h = draw.textsize(date_msg, font=font40)
         draw.text(((epd.width-w)/2,0), date_msg, font = font40, fill=epd.BLACK)
 
-        weather_msg = w.get_weather()
+        weather_msg = W.get_weather()
         w, h = draw.textsize(weather_msg, font=font40)
         draw.text(((epd.width-w)/2,epd.height-h), weather_msg, font = font40, fill=epd.BLACK)
 
