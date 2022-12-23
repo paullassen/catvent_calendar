@@ -37,11 +37,11 @@ def main():
 
         xmas_msg = "Meowy Christmas!"
         w, h = draw.textsize(xmas_msg, font=font80)
-        draw.text(((epd.width-w)/2,0), xmas_msg, font = font80, fill=epd.GREEN)
+        draw.text(((epd.width-w)/2,0), xmas_msg, font = font80, fill=epd.RED)
 
         ny_msg = "and a Happy New Year!"
         w, h = draw.textsize(ny_msg, font=font40)
-        draw.text(((epd.width-w)/2,epd.height-h-20), ny_msg, font = font40, fill=epd.RED)
+        draw.text(((epd.width-w)/2,epd.height-h-20), ny_msg, font = font40, fill=epd.GREEN)
 
         epd.display(epd.getbuffer(Himage))
         #time.sleep(60)
