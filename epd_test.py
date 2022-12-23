@@ -22,7 +22,7 @@ try:
     epd = epd5in65f.EPD()
     logging.info("init and Clear")
     epd.init()
-    epd.Clear()
+    #epd.Clear()
     font24 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 24)
     font18 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 18)
     font40 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 40)
@@ -35,8 +35,8 @@ try:
     #draw.text(((epd.width-w)/2,(epd.height-h)/2), msg, font = font40, fill=epd.BLACK)
     draw.text(((epd.width-w)/2,0, msg, font = font40, fill=epd.BLACK)
     epd.display(epd.getbuffer(Himage))
-    time.sleep(60)
-    epd.Clear()
+    #time.sleep(60)
+    #epd.Clear()
     epd.sleep()
 
 
