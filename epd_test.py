@@ -12,6 +12,7 @@ from waveshare_epd import epd5in65f
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
+from datetime import date
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -29,6 +30,10 @@ try:
     Himage = Image.open(os.path.join(imgdir, '5in65f0.png'))
     Himage = Himage.rotate(90)
     Himage = Himage.resize((epd.height, epd.width), Image.ANTIALIAS)
+    draw = ImageDraw.Draw(Himage)
+    msg = date.today().strftime("%A, %d %B %Y")
+    w, h = draw.textsize(msg, font=font40)
+    draw.text(((W-w)/2,(H-h)/2), msg, font = font40, fill=epd.BLACK)
     epd.display(epd.getbuffer(Himage))
     time.sleep(60)
     epd.Clear()
