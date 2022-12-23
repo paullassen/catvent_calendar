@@ -42,7 +42,7 @@ def main():
 
         weather_msg = w.get_weather()
         w, h = draw.textsize(weather_msg, font=font40)
-        draw.text(((epd.width-w)/2,epd.height-h), date_msg, font = font40, fill=epd.BLACK)
+        draw.text(((epd.width-w)/2,epd.height-h), weather_msg, font = font40, fill=epd.BLACK)
 
         epd.display(epd.getbuffer(Himage))
         #time.sleep(60)
