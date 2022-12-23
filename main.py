@@ -32,7 +32,7 @@ def main():
         font18 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 18)
         font40 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 40)
     
-        Himage = Image.open(os.path.join(imgdir, '5in65f0.png'))
+        Himage = Image.open(os.path.join(imgdir, 'Start_image.png'))
         Himage = Himage.resize((epd.width, epd.height), Image.ANTIALIAS)
         draw = ImageDraw.Draw(Himage)
 
