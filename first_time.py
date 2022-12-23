@@ -31,7 +31,7 @@ def main():
         font24 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 24)
         font18 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 18)
         font40 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 40)
-        font80 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 80)
+        font80 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 70)
     
         Himage = Image.open(os.path.join(imgdir, 'Start_image.png'))
         Himage = Himage.resize((epd.width, epd.height), Image.ANTIALIAS)
@@ -39,11 +39,11 @@ def main():
 
         xmas_msg = "Meowy Christmas!"
         w, h = draw.textsize(xmas_msg, font=font80)
-        draw.text(((epd.width-w)/2,0), xmas_msg, font = font80, fill=epd.BLACK)
+        draw.text(((epd.width-w)/2,0), xmas_msg, font = font80, fill=epd.GREEN)
 
         ny_msg = "and a Happy New Year!"
         w, h = draw.textsize(ny_msg, font=font40)
-        draw.text(((epd.width-w)/2,epd.height-h-20), ny_msg, font = font40, fill=epd.BLACK)
+        draw.text(((epd.width-w)/2,epd.height-h-20), ny_msg, font = font40, fill=epd.RED)
 
         epd.display(epd.getbuffer(Himage))
         #time.sleep(60)
