@@ -19,8 +19,6 @@ from datetime import date
 from lib import weather
 
 def main():
-    W = weather.Weather("Sacramento,CA,US", "imperial")
-
     try:
         logging.info("epd5in65f Demo")
         
