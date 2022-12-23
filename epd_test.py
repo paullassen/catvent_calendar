@@ -28,7 +28,6 @@ try:
     font40 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 40)
 
     Himage = Image.open(os.path.join(imgdir, '5in65f0.png'))
-    Himage = Himage.rotate(90)
     Himage = Himage.resize((epd.width, epd.height), Image.ANTIALIAS)
     draw = ImageDraw.Draw(Himage)
     msg = date.today().strftime("%A, %d %B %Y")
