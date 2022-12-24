@@ -21,7 +21,7 @@ from lib import weather
 
 def main(location):
     print("Init Weather")
-    W = weather.Weather("Sacramento,CA,US", "imperial")
+    W = weather.Weather(location, "imperial")
 
     print(f"Weather: {W.get_weather()}")
 
