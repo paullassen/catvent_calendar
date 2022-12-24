@@ -15,6 +15,7 @@ import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
 from datetime import date
+import random
 
 from lib import weather
 
@@ -48,7 +49,55 @@ def main():
         #time.sleep(60)
         #epd.Clear()
         epd.sleep()
+        time.sleep(60)
     
+    while True:
+        w_dir = '/Mis/'
+        W.update_weather()
+        weather_msg = W.get_weather()
+        if 'haze' in weather_msg:
+            w_dir = '/Fog/'
+        elif 'mist' in weather_msg:
+            w_dir = '/Fog/'
+        elif 'fog' in weather_msg:
+            w_dir = '/Fog/'
+        elif 'smoke' in weather_msg:
+            w_dir = '/Fog/'
+        elif 'dust' in weather_msg:
+            w_dir = '/Dust/'
+        elif 'sand' in weather_msg:
+            w_dir = '/Dust/'
+        elif 'ash' in weather_msg:
+            w_dir = '/Dust/'
+        elif 'thunder' in weather_msg:
+            w_dir = '/Thunderstorm/'
+        elif 'drizzle' in weather_msg:
+            w_dir = '/Rain/'
+        elif 'rain' in weather_msg:
+            w_dir = '/Rain/'
+        elif 'cloud' in weather_msg:
+            w_dir = '/Clouds/'
+        elif 'clear' in weather_msg:
+            w_dir = '/Clear/'
+        elif 'snow' in weather_msg:
+            w_dir = '/Snow/'
+
+        imgs = os.listdir(os.path.join(imgdir, w_dir))
+        img = Image.open(os.path.join(imgdir, w_dir, random.choice(imgs)))
+        img = img.resize((epd.width, epd.height), Image.ANTIALIAS)
+        draw = ImageDraw.Draw(img)
+
+        date_msg = date.today().strftime("%A, %d %B %Y")
+        w, h = draw.textsize(date_msg, font=font40)
+        draw.text(((epd.width-w)/2,0), date_msg, font = font40, fill=epd.BLACK)
+
+        weather_msg = W.get_weather().capitalize()
+        w, h = draw.textsize(weather_msg, font=font40)
+        draw.text(((epd.width-w)/2,epd.height-h-10), weather_msg, font = font40, fill=epd.BLACK)
+
+        epd.display(epd.getbuffer(img))
+        epd.sleep()
+        time.sleep(60)
     
     except IOError as e:
         logging.info(e)
