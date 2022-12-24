@@ -32,6 +32,10 @@ def main(location):
         logging.info("init and Clear")
         epd.init()
 
+        font24 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 24)
+        font18 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 18)
+        font40 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 40)
+
         print("Start Loop")
         while True:
             w_dir = '/Misc/'
