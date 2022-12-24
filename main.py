@@ -87,6 +87,9 @@ def main():
             elif 'snow' in weather_msg:
                 w_dir = '/Snow/'
 
+            if random.randint(0,100) > 50:
+                w_dir = '/Misc/'
+
             imgs = os.listdir(imgdir + w_dir)
             print(imgs)
             img = Image.open(imgdir + w_dir +  random.choice(imgs))
