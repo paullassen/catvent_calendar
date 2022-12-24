@@ -142,7 +142,7 @@ class EPD:
         # EPD hardware init end
         return 0
 
-    def getbuffer(self, image, d):
+    def getbuffer(self, image, d=None):
         # Create a pallette with the 7 colors supported by the panel
         pal_image = Image.new("P", (1,1))
         pal_image.putpalette( (0,0,0,  255,255,255,  0,255,0,   0,0,255,  255,0,0,  255,255,0, 255,128,0) + (0,0,0)*249)
