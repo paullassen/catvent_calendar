@@ -81,11 +81,11 @@ def main(location):
 
             date_msg = date.today().strftime("%A, %d %B %Y")
             w, h = draw.textsize(date_msg, font=font40)
-            draw.text(((epd.width-w)/2,0), date_msg, font = font40, fill=epd.BLACK, stroke_width=2, stroke_fill=epd.WHITE)
+            draw.text(((epd.width-w)/2,0), date_msg, font = font40, fill=epd.BLACK, stroke_width=1, stroke_fill=epd.WHITE)
 
             weather_msg = W.get_weather().capitalize()
             w, h = draw.textsize(weather_msg, font=font40)
-            draw.text(((epd.width-w)/2,epd.height-h-10), weather_msg, font = font40, fill=epd.BLACK,stroke_width=2, stroke_fill=epd.WHITE)
+            draw.text(((epd.width-w)/2,epd.height-h-10), weather_msg, font = font40, fill=epd.BLACK,stroke_width=1, stroke_fill=epd.WHITE)
 
             epd.display(epd.getbuffer(img))
             #epd.sleep()
