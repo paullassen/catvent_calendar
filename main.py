@@ -51,13 +51,14 @@ def main():
         epd.display(epd.getbuffer(Himage))
         #time.sleep(60)
         #epd.Clear()
-        epd.sleep()
+        #epd.sleep()
         time.sleep(60)
     
         print("Start Loop")
         while True:
             w_dir = '/Misc/'
             W.update_weather()
+            print(f"Weather: {W.get_weather()}")
             weather_msg = W.get_weather()
             if 'haze' in weather_msg:
                 w_dir = '/Fog/'
@@ -101,7 +102,7 @@ def main():
             draw.text(((epd.width-w)/2,epd.height-h-10), weather_msg, font = font40, fill=epd.BLACK)
 
             epd.display(epd.getbuffer(img))
-            epd.sleep()
+            #epd.sleep()
             time.sleep(60)
     
     except IOError as e:
