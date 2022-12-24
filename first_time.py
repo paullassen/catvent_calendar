@@ -40,7 +40,7 @@ def main():
         w, h = draw.textsize(ny_msg, font=font40)
         draw.text(((epd.width-w)/2,epd.height-h-20), ny_msg, font = font40, fill=epd.BLACK)
 
-        epd.display(epd.getbuffer(Himage, d=Image.NONE))
+        epd.display(epd.getbuffer(Himage))
         #time.sleep(60)
         #epd.Clear()
         epd.sleep()
