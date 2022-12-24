@@ -20,7 +20,10 @@ import random
 from lib import weather
 
 def main():
+    print("Init Weather")
     W = weather.Weather("Sacramento,CA,US", "imperial")
+
+    print(f"Weather: {W.get_weather()}")
 
     try:
         logging.info("epd5in65f Demo")
@@ -51,8 +54,9 @@ def main():
         epd.sleep()
         time.sleep(60)
     
+        print("Start Loop")
         while True:
-            w_dir = '/Mis/'
+            w_dir = '/Misc/'
             W.update_weather()
             weather_msg = W.get_weather()
             if 'haze' in weather_msg:
@@ -82,8 +86,9 @@ def main():
             elif 'snow' in weather_msg:
                 w_dir = '/Snow/'
 
-            imgs = os.listdir(os.path.join(imgdir, w_dir))
-            img = Image.open(os.path.join(imgdir, w_dir, random.choice(imgs)))
+            imgs = os.listdir(imgdir + w_dir)
+            print(imgs)
+            img = Image.open(imgdir + w_dir +  random.choice(imgs))
             img = img.resize((epd.width, epd.height), Image.ANTIALIAS)
             draw = ImageDraw.Draw(img)
 
