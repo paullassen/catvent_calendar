@@ -12,8 +12,8 @@ class Weather:
         self.weather_url = "https://api.openweathermap.org/data/2.5/weather?"
         self.geocode_url = "https://api.openweathermap.org/geo/1.0/direct?"
 
-        self.lat, self.lon = self.get_lat_lon()
-
+        self.lat = ''
+        self.lon = ''
         self.weather_desc = ''
         self.temp = 0
         self.today = date.today()

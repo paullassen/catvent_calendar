@@ -31,29 +31,7 @@ def main(location):
         epd = epd5in65f.EPD()
         logging.info("init and Clear")
         epd.init()
-        #epd.Clear()
-        font24 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 24)
-        font18 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 18)
-        font40 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 40)
-    
-        Himage = Image.open(os.path.join(imgdir, '5in65f0.png'))
-        Himage = Himage.resize((epd.width, epd.height), Image.ANTIALIAS)
-        draw = ImageDraw.Draw(Himage)
 
-        date_msg = date.today().strftime("%A, %d %B %Y")
-        w, h = draw.textsize(date_msg, font=font40)
-        draw.text(((epd.width-w)/2,0), date_msg, font = font40, fill=epd.BLACK)
-
-        weather_msg = W.get_weather().capitalize()
-        w, h = draw.textsize(weather_msg, font=font40)
-        draw.text(((epd.width-w)/2,epd.height-h-10), weather_msg, font = font40, fill=epd.BLACK)
-
-        epd.display(epd.getbuffer(Himage))
-        #time.sleep(60)
-        #epd.Clear()
-        #epd.sleep()
-        time.sleep(60)
-    
         print("Start Loop")
         while True:
             w_dir = '/Misc/'
@@ -91,8 +69,9 @@ def main(location):
                 w_dir = '/Misc/'
 
             imgs = os.listdir(imgdir + w_dir)
-            print(imgs)
-            img = Image.open(imgdir + w_dir +  random.choice(imgs))
+            r_img = random.choice(imgs)
+            print(r_img)
+            img = Image.open(imgdir + w_dir +  r_img)
             img = img.resize((epd.width, epd.height), Image.ANTIALIAS)
             draw = ImageDraw.Draw(img)
 
