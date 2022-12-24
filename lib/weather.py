@@ -28,20 +28,28 @@ class Weather:
 
     def get_lat_lon(self):
         url = self.geocode_url + self.api_key + self.city
-        r = requests.get(url)
+        r = requests.get(url, timeout=10)
         data = r.json()
         lat = data[0]['lat']
         lon = data[0]['lon']
         return "&lat=" + str(lat), "&lon=" + str(lon)
 
     def update_weather(self):
-        url = self.weather_url + self.api_key + self.lat + self.lon + self.units
-        r = requests.get(url)
-        data = r.json()
+        try:
+            self.lat, self.lon = self.get_lat_lon()
+        except:
+            return
 
-        self.weather_desc = data['weather'][0]['description']
-        self.temp = data['main']['temp']
-        self.today = date.today()
+        url = self.weather_url + self.api_key + self.lat + self.lon + self.units
+        r = requests.get(url, timeout=10)
+        try:
+            data = r.json()
+
+            self.weather_desc = data['weather'][0]['description']
+            self.temp = data['main']['temp']
+            self.today = date.today()
+        except:
+            pass
 
     def get_weather(self):
         return self.weather_desc

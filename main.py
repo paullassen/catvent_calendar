@@ -19,7 +19,7 @@ import random
 
 from lib import weather
 
-def main():
+def main(location):
     print("Init Weather")
     W = weather.Weather("Sacramento,CA,US", "imperial")
 
@@ -117,4 +117,4 @@ def main():
         exit()
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1])
