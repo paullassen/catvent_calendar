@@ -14,9 +14,6 @@ from waveshare_epd import epd5in65f
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
-from datetime import date
-
-from lib import weather
 
 def main():
     try:
@@ -37,11 +34,11 @@ def main():
 
         xmas_msg = "Meowy Christmas!"
         w, h = draw.textsize(xmas_msg, font=font80)
-        draw.text(((epd.width-w)/2,0), xmas_msg, font = font80, fill=epd.RED)
+        draw.text(((epd.width-w)/2,0), xmas_msg, font = font80, fill=epd.BLACK)
 
         ny_msg = "and a Happy New Year!"
         w, h = draw.textsize(ny_msg, font=font40)
-        draw.text(((epd.width-w)/2,epd.height-h-20), ny_msg, font = font40, fill=epd.GREEN)
+        draw.text(((epd.width-w)/2,epd.height-h-20), ny_msg, font = font40, fill=epd.BLACK)
 
         epd.display(epd.getbuffer(Himage))
         #time.sleep(60)
