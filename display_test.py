@@ -29,7 +29,7 @@ def main():
         logging.info("init and Clear")
         epd.init()
 
-        dirs = [('/'+d+'/') for d in os.listdir(imgdir) if os.path.isdir(dir + '/' + d)]
+        dirs = [('/'+d+'/') for d in os.listdir(imgdir) if os.path.isdir(imgdir + '/' + d)]
         for d in dirs:
             idir = imgdir + d
             for i in os.listdir(idir):
