@@ -36,46 +36,58 @@ def main(location):
         font18 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 18)
         font40 = ImageFont.truetype(os.path.join(imgdir, 'Font.ttc'), 40)
 
+        cond = 'Misc'
+        file_dict = {}
+        for d in os.listdir(imgdir) if os.path.isdir(imgdir):
+            d_str = '/' + d + '/'
+            file_dict[d] = [(d_str+f) for f in os.listdir(d_str) if os.path.isfile(d_str+f)]
+
         print("Start Loop")
         while True:
-            w_dir = '/Misc/'
             W.update_weather()
             print(f"Weather: {W.get_weather()}")
             weather_msg = W.get_weather()
             if 'haze' in weather_msg:
-                w_dir = '/Fog/'
+                cond = 'Fog'
             elif 'mist' in weather_msg:
-                w_dir = '/Fog/'
+                cond = 'Fog'
             elif 'fog' in weather_msg:
-                w_dir = '/Fog/'
+                cond = 'Fog'
             elif 'smoke' in weather_msg:
-                w_dir = '/Fog/'
+                cond = 'Fog'
             elif 'dust' in weather_msg:
-                w_dir = '/Dust/'
+                cond = 'Dust'
             elif 'sand' in weather_msg:
-                w_dir = '/Dust/'
+                cond = 'Dust'
             elif 'ash' in weather_msg:
-                w_dir = '/Dust/'
+                cond = 'Dust'
             elif 'thunder' in weather_msg:
-                w_dir = '/Thunderstorm/'
+                cond = 'Thunderstorm'
             elif 'drizzle' in weather_msg:
-                w_dir = '/Rain/'
+                cond = 'Rain'
             elif 'rain' in weather_msg:
-                w_dir = '/Rain/'
+                cond = 'Rain'
             elif 'cloud' in weather_msg:
-                w_dir = '/Clouds/'
+                cond = 'Clouds'
             elif 'clear' in weather_msg:
-                w_dir = '/Clear/'
+                cond = 'Clear'
             elif 'snow' in weather_msg:
-                w_dir = '/Snow/'
+                cond = 'Snow'
 
             if random.randint(0,100) > 50:
-                w_dir = '/Misc/'
+                if random.randint(0,100) > 80:
+                    cond = 'Misc'
+                else:
+                    cond = 'All'
 
-            imgs = os.listdir(imgdir + w_dir)
-            r_img = random.choice(imgs)
+
+            r_img = ''
+            print(f"Condition: {cond}")
+            if cond == 'All':
+                imgset = random.choice(list(file_dict.keys()))
+                r_img = random.choice(file_dict[imgset])
             print(r_img)
-            img = Image.open(imgdir + w_dir +  r_img)
+            img = Image.open(r_img)
             img = img.resize((epd.width, epd.height), Image.ANTIALIAS)
             draw = ImageDraw.Draw(img)
 
