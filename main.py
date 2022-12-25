@@ -39,7 +39,7 @@ def main(location):
         cond = 'Misc'
         file_dict = {}
         for d in os.listdir(imgdir):
-            if os.path.isdir(imgdir):
+            if os.path.isdir(imgdir + '/' + d):
                 d_str = imgdir + '/' + d + '/'
                 file_dict[d] = [(d_str+f) for f in os.listdir(d_str) if os.path.isfile(d_str+f)]
 
