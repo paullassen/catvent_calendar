@@ -19,7 +19,7 @@ import random
 
 from lib import weather
 
-def main(location):
+def main():
     print("Init Weather")
 
     try:
@@ -48,4 +48,4 @@ def main(location):
         exit()
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    main()
