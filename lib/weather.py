@@ -61,7 +61,8 @@ class Weather:
         return self.today
 
 if __name__ == "__main__":
-    w = Weather("Sacramento,CA,US", "imperial")
+    import sys
+    w = Weather(sys.argv[1], "imperial")
     data = w.get_weather()
     print(f'Today is {w.get_date()}, the weather is {data} and the temperature is {w.get_temp()}')
 
