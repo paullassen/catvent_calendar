@@ -87,6 +87,8 @@ def main(location):
             if cond == 'All':
                 imgset = random.choice(list(file_dict.keys()))
                 r_img = random.choice(file_dict[imgset])
+            else:
+                r_img = random.choice(file_dict[cond])
             print(r_img)
             img = Image.open(r_img)
             img = img.resize((epd.width, epd.height), Image.ANTIALIAS)
