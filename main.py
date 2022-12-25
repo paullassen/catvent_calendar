@@ -105,6 +105,7 @@ def main(location):
             time.sleep(60)
     
     except IOError as e:
+        print(e)
         logging.info(e)
         
     except KeyboardInterrupt:    
