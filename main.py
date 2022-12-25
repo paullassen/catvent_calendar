@@ -38,9 +38,10 @@ def main(location):
 
         cond = 'Misc'
         file_dict = {}
-        for d in os.listdir(imgdir) if os.path.isdir(imgdir):
-            d_str = '/' + d + '/'
-            file_dict[d] = [(d_str+f) for f in os.listdir(d_str) if os.path.isfile(d_str+f)]
+        for d in os.listdir(imgdir):
+            if os.path.isdir(imgdir):
+                d_str = '/' + d + '/'
+                file_dict[d] = [(d_str+f) for f in os.listdir(d_str) if os.path.isfile(d_str+f)]
 
         print("Start Loop")
         while True:
