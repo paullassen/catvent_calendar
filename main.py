@@ -76,7 +76,7 @@ def main(location):
                 cond = 'Snow'
 
             if random.randint(0,100) > 50:
-                if random.randint(0,100) > 80:
+                if random.randint(0,100) < 80:
                     cond = 'Misc'
                 else:
                     cond = 'All'
